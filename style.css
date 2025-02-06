@@ -27,6 +27,12 @@ h1 {
     margin-bottom: 20px;
 }
 
+h1 img {
+    vertical-align: middle; /* Alineamos la imagen al centro verticalmente con el texto */
+    margin-bottom: 15px; /* Añadimos algo de espacio entre el texto y la imagen */
+    height: 80px; /* Ajustamos el tamaño de la imagen */
+}
+
 h2 {
     color: #444;
     margin-top: 20px;
