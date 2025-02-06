@@ -25,7 +25,7 @@ document.getElementById("nombreAlumno").value = "";
 // Función para actualizar la tabla de alumnos
 function actualizarTabla() {
 var tabla = document.getElementById("tablaAlumnos");
-      .innerHTML = "";  // Limpiar la tabla falta saber el nombre
+tabla.innerHTML = "";  // Limpiar la tabla
 
 // Recorrer la lista de alumnos y crear una fila por cada uno
 for (var i = 0; i < alumnos.length; i++) {
@@ -50,7 +50,7 @@ for (var i = 0; i < alumnos.length; i++) {
             eliminarAlumno(indice);
         };
     })(i);
-    celdaEliminar.innerHTML =;
+    celdaEliminar.appendChild(botonEliminar);
 }
 }
 
