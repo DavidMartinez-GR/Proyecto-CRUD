@@ -1,0 +1,123 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Cambié 'center' a 'flex-start' para que esté más arriba */
+    height: 100vh;
+    text-align: center;
+    padding-top: 80px; /* Da un pequeño margen desde el borde superior */
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px; /* Bordes redondeados para el contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para el contenedor */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #444;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Bordes redondeados para el input */
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+}
+
+input[type="text"]:focus {
+    background-color: #e6f7ff; /* Fondo más suave al enfocar */
+    border-color: #3c94e7;
+    outline: none; /* Quitar borde por defecto */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(65, 196, 229);
+    color: #fff;
+    border: none;
+    border-radius: 12px; /* Bordes redondeados para los botones */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight:bold;
+}
+
+button:hover {
+    background-color: #3c94e7; /* Color de fondo más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de agrandar el botón */
+}
+
+#mensaje {
+    color: #3c94e7;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 12px; /* Bordes redondeados para la tabla */
+    overflow: hidden; /* Asegura que los bordes redondeados se vean correctamente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para la tabla */
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    font-size: 16px;
+    color: #333;
+}
+
+th {
+    background-color: #d3d3d3; /* Fondo gris suave para los encabezados */
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+button.eliminar {
+    background-color: #e74c3c;
+    padding: 6px 12px;
+    border-radius: 12px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button.eliminar:hover {
+    background-color: #c0392b;
+    transform: scale(1.1); /* Efecto de agrandar el botón eliminar */
+}
+
+tr:last-child td {
+    font-weight: bold;
+    background-color: #d3d3d3; /* Fondo gris suave */
+    text-align: center;
+}

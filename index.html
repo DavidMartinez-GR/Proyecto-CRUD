@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style href="style.css"></style>
+    <title>Gestión de Alumnos</title>
+    <link rel="stylesheet" href="style.css"> <!-- Archivo CSS -->
 </head>
 <body>
-    <h1>Gestión de Alumnos</h1>
-    <input type="text" id="nombreAlumno" placeholder="Escribe el nombre">
-    <button onclick="agregarAlumno()">Guardar</button>
+    <div class="container">
+        <h1>PROYECTO CRUD DE ALUMNOS</h1>
+        <input type="text" id="nombreAlumno" placeholder="Escribe el nombre del alumno">
+        <button onclick="agregarAlumno()">Guardar</button>
+        <div id="mensaje"></div> <!-- Mensaje para agregar confirmación -->
+        <h2>Lista de Alumnos</h2>
+        <div id="tablaContainer"></div> <!-- Aquí se insertará la tabla -->
+    </div>
 
-    <h2>Lista de Alumnos</h2>
-    <table border="1" id="tablaAlumnos">
+    <script src="functions.js"></script> <!-- Archivo JavaScript -->
 </body>
-    <script src="front-end.js"></script>
-    <script src="back-end.js"></script>
 </html>
