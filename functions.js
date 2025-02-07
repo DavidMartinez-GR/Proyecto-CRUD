@@ -2,7 +2,7 @@ let alumnos = []; // Array para almacenar los nombres de los alumnos
 
 // Función para agregar un alumno
 function agregarAlumno() {
-    let nombreAlumno = document.getElementById('nombreAlumno').value.trim();
+    let nombreAlumno = document.getElementById('nombreAlumno').value;
 
     if (nombreAlumno !== "") {
         alumnos.push(nombreAlumno); // Agregar el nombre al array
