@@ -10,11 +10,35 @@
     <div class="container">
         
         <h1><div class="imagen"><img src="imagen/school.png" alt=""></div>PROYECTO CRUD DE ALUMNOS</h1>
-        <input type="text" id="nombreAlumno" placeholder="Escribe el nombre del alumno">
-        <button onclick="agregarAlumno()">Guardar</button>
         <div id="mensaje"></div> <!-- Mensaje para agregar confirmación -->
-        <h2>Lista de Alumnos</h2>
+        <h2>Gestión de Alumnos</h2>
+      
+        <input type="text" id="nombreAlumno" placeholder="Ingrese el nombre del alumno" />
+        <button id="btnGuardar" onclick="agregarAlumno()">Guardar</button>
+        <button id="btnModificar" onclick="modificarAlumno()" style="display:none;">Modificar</button>
+        <button id="btnCancelar" onclick="cancelarEdicion()" style="display:none;">Cancelar</button>
+      
+        <h3>Buscar Alumno</h3>
+        <input type="text" id="buscarAlumno" placeholder="Buscar por nombre" />
+        <button onclick="buscarAlumno()">Buscar</button>
+        <p id="resultadoBusqueda"></p>
+      
+        <h3>Reemplazar Todos</h3>
+        <input type="text" id="nombreBuscar" placeholder="Nombre a reemplazar" />
+        <input type="text" id="nombreReemplazar" placeholder="Nuevo nombre" />
+        <button onclick="reemplazarTodos()">Reemplazar Todos</button>
+      
+        <h3>Reemplazar Paso a Paso</h3>
+        <input type="text" id="buscarNombrePaso" placeholder="Nombre a buscar" />
+        <button onclick="buscarYReemplazar()">Buscar y Reemplazar</button>
+        
+        <div id="contenedorReemplazos" class="reemplazar-container"></div>
+        
         <div id="tablaContainer"></div> <!-- Aquí se insertará la tabla -->
+      
+        <button id="btnInvertirNombres" onclick="invertirNombres()">Invertir Nombres</button>      
+        <div id="contenedorInformacion"></div>
+
     </div>
 
     <script src="functions.js"></script> <!-- Archivo JavaScript -->
