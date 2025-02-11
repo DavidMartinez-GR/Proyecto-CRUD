@@ -231,4 +231,3 @@ function buscarAlumno() {
         document.getElementById('resultadoBusqueda').textContent = "";
     }
 }
-</script>
