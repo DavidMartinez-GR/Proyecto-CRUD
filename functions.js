@@ -283,16 +283,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 event.preventDefault();
                 var inputValue = event.target.value;
                 if (inputValue !== "") {
-                    ejecutarAccion(event.target.id);
-                    event.target.value = ""; // Limpiar el campo después de la acción
+                    ejecutarAccion(event.target);
+                    limpiarCampos(event.target.id);
                 }
             }
         });
     }
 });
 
-function ejecutarAccion(inputId) {
-    if (document.getElementById(inputId).value === "") {
+function ejecutarAccion(input) {
+    var inputId = input.id;
+    if (input.value === "") {
         return;
     }
     switch (inputId) {
@@ -313,6 +314,23 @@ function ejecutarAccion(inputId) {
         case 'buscarNombrePaso':
             buscarYReemplazar();
             break;
+        case 'nuevoNombre':
+            var indice = input.getAttribute('data-index');
+            if (indice !== null) {
+                reemplazar(parseInt(indice));
+            } else {
+                reemplazar(0); // Fallback si no hay índice
+            }
+            break;
+    }
+}
+
+function limpiarCampos(inputId) {
+    if (inputId === 'nombreBuscar' || inputId === 'nombreReemplazar') {
+        document.getElementById('nombreBuscar').value = "";
+        document.getElementById('nombreReemplazar').value = "";
+    } else {
+        document.getElementById(inputId).value = "";
     }
 }
 
