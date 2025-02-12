@@ -104,6 +104,32 @@ function mostrarTabla() {
     document.getElementById('tablaContainer').innerHTML = texto;
 }
 
+function editarAlumno(index) {
+    alumnoSeleccionado = index;
+    document.getElementById('nombreAlumno').value = alumnos[index];
+    document.getElementById('btnGuardar').style.display = 'none';
+    document.getElementById('btnModificar').style.display = 'inline-block';
+    document.getElementById('btnCancelar').style.display = 'inline-block';
+}
+
+function modificarAlumno() {
+    let nuevoNombre = document.getElementById('nombreAlumno').value.trim();
+    if (nuevoNombre !== "" && alumnoSeleccionado !== null) {
+        alumnos[alumnoSeleccionado] = nuevoNombre;
+        mostrarTabla();
+        cancelarEdicion();
+    }
+}
+
+function cancelarEdicion() {
+    alumnoSeleccionado = null;
+    document.getElementById('nombreAlumno').value = '';
+    document.getElementById('btnGuardar').style.display = 'inline-block';
+    document.getElementById('btnModificar').style.display = 'none';
+    document.getElementById('btnCancelar').style.display = 'none';
+}
+
+
 // Función para calcular el promedio de la longitud de los nombres
 function calcularPromedioLongitud() {
     if (alumnos.length === 0) return 0;
@@ -156,21 +182,60 @@ function reemplazarTodos() {
 
 // Función para reemplazar paso a paso
 function buscarYReemplazar() {
-    let nombreBuscar = document.getElementById('buscarNombrePaso').value.trim();
+    let nombreBuscar = document.getElementById('buscarNombrePaso').value;
     let contenedorReemplazos = document.getElementById('contenedorReemplazos');
     contenedorReemplazos.innerHTML = ''; // Limpiar el contenedor
 
+    let indices = [];
     for (let i = 0; i < alumnos.length; i++) {
         if (alumnos[i].includes(nombreBuscar)) {
-            contenedorReemplazos.innerHTML += `
+            indices.push(i);
+        }
+    }
+    
+    if (indices.length === 0) {
+        contenedorReemplazos.innerHTML = '<p>No se encontraron coincidencias.</p>';
+        return;
+    }
+    
+    let indexActual = 0;
+    mostrarReemplazo(indexActual);
+
+    function mostrarReemplazo(index) {
+        contenedorReemplazos.innerHTML = `
             <div class="reemplazar-item">
-                <span>En el índice ${i}: ${alumnos[i]}</span>
-                <button onclick="reemplazar(${i}, '${nombreBuscar}')">Reemplazar</button>
-                <button onclick="saltar(${i})">Saltar</button>
-            </div>`;
+                <span>Coincidencia en índice ${indices[index]}: ${alumnos[indices[index]]}</span>
+                <input type="text" id="nuevoNombre" placeholder="Nuevo nombre" />
+                <button onclick="reemplazar(${indices[index]})">Reemplazar</button>
+                <button onclick="saltar()">Saltar</button>
+            </div>
+        `;
+    }
+
+    window.reemplazar = function (indice) {
+        let nuevoNombre = document.getElementById('nuevoNombre').value;
+        if (nuevoNombre !== "") {
+            alumnos[indice] = nuevoNombre;
+            mostrarTabla();
+        }
+        avanzar();
+    };
+
+    window.saltar = function () {
+        avanzar();
+    };
+
+    function avanzar() {
+        indexActual++;
+        if (indexActual < indices.length) {
+            mostrarReemplazo(indexActual);
+        } else {
+            contenedorReemplazos.innerHTML = '<p>Reemplazo completado.</p>';
+            mostrarTabla();
         }
     }
 }
+
 
 // Función para reemplazar un nombre paso a paso
 function reemplazar(index, nombreBuscar) {
@@ -210,7 +275,46 @@ function comprobarEnter(event) {
 }
 
 // Asignar el evento de manera explícita
-document.getElementById('nombreAlumno').addEventListener('keydown', comprobarEnter);
+document.addEventListener('DOMContentLoaded', function() {
+    var inputs = document.querySelectorAll('input[type="text"]');
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                var inputValue = event.target.value;
+                if (inputValue !== "") {
+                    ejecutarAccion(event.target.id);
+                    event.target.value = ""; // Limpiar el campo después de la acción
+                }
+            }
+        });
+    }
+});
+
+function ejecutarAccion(inputId) {
+    if (document.getElementById(inputId).value === "") {
+        return;
+    }
+    switch (inputId) {
+        case 'nombreAlumno':
+            if (alumnoSeleccionado === null) {
+                agregarAlumno();
+            } else {
+                modificarAlumno();
+            }
+            break;
+        case 'buscarAlumno':
+            buscarAlumno();
+            break;
+        case 'nombreBuscar':
+        case 'nombreReemplazar':
+            reemplazarTodos();
+            break;
+        case 'buscarNombrePaso':
+            buscarYReemplazar();
+            break;
+    }
+}
 
 // Función para buscar un alumno en la lista
 function buscarAlumno() {
