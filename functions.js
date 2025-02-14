@@ -40,7 +40,7 @@ function mostrarDetalles(index) {
         <h4>Detalles del Nombre: ${nombre}</h4>
         <p><strong>Longitud:</strong> ${longitud}</p>
         <p><strong>Comparación con el promedio:</strong> ${longitudComparacion}</p>
-        <p><strong>Es el nombre más:</strong> ${tipoNombre}</p>
+        <p><strong>Es el nombre:</strong> ${tipoNombre}</p>
         <p><strong>Número de vocales:</strong> ${numVocales}</p>
       </div>
     `;
